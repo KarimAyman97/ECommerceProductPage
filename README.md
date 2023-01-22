@@ -16,8 +16,6 @@ This is a solution to the [E-commerce product page challenge on Frontend Mentor]
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -187,6 +185,6 @@ i want to keep focusing on carousel and use some another libraries like swiperjs
 
 ## Author
 
-- Website - [Karim Ayman](https://www.your-site.com)
+- Website - [Karim Ayman](https://karimayman97.github.io/ECommerceProductPage/ECommerceProductPage/)
 - Frontend Mentor - [@KarimAyman97](https://www.frontendmentor.io/profile/KarimAyman97)
 - Linkedin - [@yourusername](https://www.linkedin.com/in/karimayman97/)
