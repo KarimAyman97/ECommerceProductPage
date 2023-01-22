@@ -1,0 +1,139 @@
+<!-- large and medium screens -->
+<div class="container d-none d-md-block">
+  <nav class="navbar  navbar-expand-md">
+    <div class="container">
+      <a class="navbar-brand mt-0" href="#">sneakers</a>
+      <div class="offcanvas  offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body mt-2">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link links" aria-current="page">Collections</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link links" href="#">Men</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link links ">Women</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link links ">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link links ">Contact</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mn-auto mb-2 mb-lg-0">
+            <li class="nav-item ">
+              <a class="nav-link cart-svg " (click)="showCart=!showCart">
+                <span *ngIf="showCart || products.length>0" id="counter">{{products.length}}</span>
+                <svg width="20" height="16">
+                  <image xlink:href="./assets/images/icon-cart.svg" width="20" height="16" />
+                </svg>
+              </a>
+            </li>
+            <li class=" nav-item">
+              <a href="https://example.com" class="nav-link mt-1">
+                <img src="./assets/images/image-avatar.png" class="mr-3 img-circle" alt="Avatar Image" width="35px"
+                  id="avatar-img">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <hr>
+</div>
+
+<!-- small screens -->
+<div class="container-fluid d-block d-md-none">
+  <div class="d-flex flex-row">
+    <div class="col-1 mt-3 ml-1 justify-content-end align-items-end  ">
+      <a data-bs-toggle="offcanvas" href="#offcanvas" role="button"><svg width="16" height="16">
+          <image xlink:href="./assets/images/icon-menu.svg" width="16" height="16" />
+        </svg></a>
+
+    </div>
+    <div class="col-6 mt-3 ">
+      <div class="d-inline"> <a class="navbar-brand mt-4" href="index.html">sneakers</a>
+      </div>
+    </div>
+    <ul class="navbar-nav col-5 justify-content-end align-items-end ">
+      <div class="d-flex flex-row">
+        <li class="nav-item ">
+          <a class="nav-link cart-svg " (click)="showCart=!showCart">
+            <span id="counter">1</span>
+            <svg width="20" height="16">
+              <image xlink:href="./assets/images/icon-cart.svg" width="20" height="16" />
+            </svg>
+          </a>
+        </li>
+        <li class=" nav-item">
+          <a href="https://example.com" class="nav-link mt-1">
+            <img src="./assets/images/image-avatar.png" class="mr-3 img-circle" alt="Avatar Image" width="35px"
+              id="avatar-img">
+          </a>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>
+
+<!-- off-canvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link links-offcanvas" aria-current="page">Collections</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link links-offcanvas" href="#">Men</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link links-offcanvas ">Women</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link links-offcanvas ">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link links-offcanvas ">Contact</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- cart details -->
+<div class="container">
+  <div class="cart mt-3" *ngIf="showCart">
+    <div class="shopping-cart-header">
+      <span class="mx-3 cart-header">Cart</span>
+    </div>
+    <ul class="shopping-cart-items">
+      <div *ngFor="let product of products">
+        <li class="clearfix row align-items-center justify-content-center">
+          <div class="col-auto">
+            <img src="./assets/images/image-product-1.jpg" alt="item1" />
+          </div>
+          <div class="col-auto">
+            <span class="item-name">{{product.name}}</span>
+            <span class="item-price">${{ product.price | number:'.2' }} x {{product.count}}</span>
+            <span class="item-total">${{ getTotal(product) | number:'.2' }}</span>
+          </div>
+          <div class="col-auto" (click)="deleteItemFromCart(product)">
+            <svg width="16" height="16" class="icon-delete">
+              <image xlink:href="./assets/images/icon-delete.svg" width="16" height="16" />
+            </svg>
+          </div>
+        </li>
+      </div>
+    </ul>
+    <a href="#" class="button mx-auto">Checkout</a>
+  </div>
+</div>

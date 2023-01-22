@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="row">
+    <!-- carousel large and medium screens -->
+    <div class="col-md-6 d-none d-md-block">
+      <div id="custCarousel" class="carousel slide" data-bs-ride="carousel" align="center">
+        <!-- slides -->
+        <div class="carousel-inner" (click)="showZoomed()">
+          <div class="carousel-item active">
+            <img src="./assets/images/image-product-1.jpg" alt="Hills">
+          </div>
+          <div class="carousel-item">
+            <img src="./assets/images/image-product-2.jpg" alt="Hills">
+          </div>
+          <div class="carousel-item">
+            <img src="./assets/images/image-product-3.jpg" alt="Hills">
+          </div>
+          <div class="carousel-item">
+            <img src="./assets/images/image-product-4.jpg" alt="Hills">
+          </div>
+        </div>
+
+        <!-- Thumbnails -->
+        <ol class="carousel-indicators ">
+          <li class="list-inline-item active">
+            <a id="carousel-selector-0" data-bs-slide-to="0" data-bs-target="#custCarousel">
+              <img src="./assets/images/image-product-1-thumbnail.jpg" class="img-fluid ">
+            </a>
+          </li>
+
+          <li class="list-inline-item">
+            <a id="carousel-selector-1 " data-bs-slide-to="1" data-bs-target="#custCarousel">
+              <img src="./assets/images/image-product-2-thumbnail.jpg" class="img-fluid ">
+            </a>
+          </li>
+
+          <li class="list-inline-item">
+            <a id="carousel-selector-2" data-bs-slide-to="2" data-bs-target="#custCarousel">
+              <img src="./assets/images/image-product-3-thumbnail.jpg" class="img-fluid ">
+            </a>
+          </li>
+
+          <li class="list-inline-item">
+            <a id="carousel-selector-2" data-bs-slide-to="3" data-bs-target="#custCarousel">
+              <img src="./assets/images/image-product-4-thumbnail.jpg" class="img-fluid">
+            </a>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <!-- carousel small screens -->
+    <div id="carouselExampleControls" class="carousel slide mt-0 col-12 d-block d-md-none" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./assets/images/image-product-1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/image-product-2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/image-product-3.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/image-product-4.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="col-md-6">
+      <div class=" mt-5">
+        <h3>sneaker company</h3>
+      </div>
+      <div>
+        <h1>Fall Limited Edition Sneakers</h1>
+      </div>
+      <div id="product-description">
+        <p>These low-profile sneakers are your perfect casual wear companions. Featuring a durable rubber outer sole,
+          they'll withstand everyhing the weather can offer.</p>
+      </div>
+      <div class="row discount mt-5">
+        <div class="col-auto price">
+          ${{ discountPrice | number:'.2' }}
+        </div>
+        <div class="col-4">
+          <div class=" mt-1 mx-1">
+            <span class="percent">50%</span>
+          </div>
+        </div>
+        <div class="mt-1 real-price  col-auto d-inline d-md-none  ">
+          <span> ${{ realPrice | number:'.2' }}</span>
+        </div>
+      </div>
+      <div class="row real-price mt-3 d-none d-md-block">
+        <div class="col-auto">
+          <span> ${{ realPrice | number:'.2' }}</span>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-sm-12 col-md-4 mb-2">
+          <div class="number">
+            <i class="material-icons-outlined minus " (click)="decreaseNumberRequired()">remove</i>
+            <span class="mx-auto count">{{this.count}}</span>
+            <i class="material-icons-outlined plus " (click)="increaseNumberRequired()">add</i>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-auto">
+          <button class="add-to-cart w-100" (click)="addToCart()"><i class="material-icons-outlined">shopping_cart</i>
+            Add to
+            cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="Zoomer">
+  <div *ngIf="showZoomer">
+    <button class="close-button" mat-button (click)="onCloseZoomer($event)">
+      <img src="assets/images/icon-close.svg" alt="close" />
+    </button>
+    <button class="stepper-button-previous" mat-button (click)="moveBack($event)"><img
+        src="assets/images/icon-previous.svg" alt="previous" /></button>
+    <button class="stepper-button-next" mat-button (click)="moveForward($event)"><img src="assets/images/icon-next.svg"
+        alt="next" /></button>
+    <img class="Zoomer-image" src="assets/images/image-product-{{selectedItem}}.jpg" alt="product" />
+    <div class="thumbnail-block">
+      <img [ngClass]="{'selected-image': selectedItem === 1}" class="product-thumbnail-image"
+        src="assets/images/image-product-1-thumbnail.jpg" alt="product-thumbnail" (click)="selectItem1($event)" />
+      <img [ngClass]="{'selected-image': selectedItem === 2}" class="product-thumbnail-image"
+        src="assets/images/image-product-2-thumbnail.jpg" alt="product-thumbnail" (click)="selectItem2($event)" />
+      <img [ngClass]="{'selected-image': selectedItem === 3}" class="product-thumbnail-image"
+        src="assets/images/image-product-3-thumbnail.jpg" alt="product-thumbnail" (click)="selectItem3($event)" />
+      <img [ngClass]="{'selected-image': selectedItem === 4}" class="product-thumbnail-image"
+        src="assets/images/image-product-4-thumbnail.jpg" alt="product-thumbnail" (click)="selectItem4($event)" />
+    </div>
+  </div>
+</div>
