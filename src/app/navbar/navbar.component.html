@@ -29,7 +29,7 @@
           <ul class="navbar-nav mn-auto mb-2 mb-lg-0">
             <li class="nav-item ">
               <a class="nav-link cart-svg " (click)="showCart=!showCart">
-                <span *ngIf="showCart || products.length>0" id="counter">{{products.length}}</span>
+                <span *ngIf="showCart || products.length" id="counter">{{products.length}}</span>
                 <svg width="20" height="16">
                   <image xlink:href="./assets/images/icon-cart.svg" width="20" height="16" />
                 </svg>
@@ -66,7 +66,7 @@
       <div class="d-flex flex-row">
         <li class="nav-item ">
           <a class="nav-link cart-svg " (click)="showCart=!showCart">
-            <span id="counter">1</span>
+            <span *ngIf="showCart || products.length" id="counter">{{products.length}}</span>
             <svg width="20" height="16">
               <image xlink:href="./assets/images/icon-cart.svg" width="20" height="16" />
             </svg>
